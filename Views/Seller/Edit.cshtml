@@ -1,0 +1,49 @@
+﻿@model SalesWebMvc1.Models.ViewModels.SellerFormViewModel
+
+
+@{
+}
+
+<h1>Edit Seller</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div class="form-group">
+                <label class="control-label" asp-for="Seller.Name"></label>
+                <input class="form-control" asp-for="Seller.Name"/>
+                <span asp-validation-for="Seller.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="Seller.Email"></label>
+                <input class="form-control" asp-for="Seller.Email"/>
+                <span asp-validation-for="Seller.Email" class="text-danger"></span>
+            </div>
+            <div class ="form-group">
+                <label class="control-label" asp-for="Seller.BirthDate"></label>
+                <input class="form-control" asp-for="Seller.BirthDate"/>
+                <span asp-validation-for="Seller.BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="Seller.BaseSalary"></label>
+                <input class="form-control" asp-for="Seller.BaseSalary"/>
+                <span asp-validation-for="Seller.BaseSalary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="Seller.DepartmentId"></label>
+                <select class="form-control" asp-for="Seller.DepartmentId" asp-items="@(new SelectList(Model.Departments,"Id","Name"))"></select>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn-default">Edit</button>
+            </div>
+        </form>
+        <div>
+            <a role="button" class="btn btn-light" asp-action="Index" asp-controller="Seller">Back</a>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

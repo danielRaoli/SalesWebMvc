@@ -1,0 +1,50 @@
+﻿@model SalesWebMvc1.Models.ViewModels.SellerFormViewModel;
+@{
+    ViewData["title"] = "Create a new Seller";
+}
+<h1 class="text-center">@ViewData["title"]</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div class="form-group">
+                <label class="control-label" asp-for="Seller.Name"></label>
+                <input class="form-control" asp-for="Seller.Name" />
+                <span asp-validation-for="Seller.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="Seller.Email"></label>
+                <input type="email" class="form-control" asp-for="Seller.Email" />
+                <span asp-validation-for="Seller.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="Seller.BirthDate"></label>
+                <input class="form-control" asp-for="Seller.BirthDate" />
+                <span asp-validation-for="Seller.BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="Seller.BaseSalary"></label>
+                <input class="form-control" asp-for="Seller.BaseSalary" />
+                <span asp-validation-for="Seller.BaseSalary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="Seller.DepartmentId"></label>
+                <select class="form-control" asp-for="Seller.DepartmentId" asp-items=@(new SelectList(Model.Departments,"Id","Name"))></select>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <button class="btn btn-primary" type="submit">Create</button>
+                    <hr />
+                    <a role="button" class="btn btn-danger" asp-controller="Seller" asp-action="Index">Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
